@@ -12,8 +12,15 @@ class Car extends Model
      * @var array
      */
     protected $fillable = [
-        'brand', 'color', 'user_id'
+        'id', 'brand', 'color', 'user_id'
     ];
+
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = ['created_at', 'updated_at']
 
     /**
      * The attributes that should be hidden for arrays.
@@ -30,10 +37,7 @@ class Car extends Model
      * @var array
      */
     protected $casts = [
-        'brand' => 'string',
-        'color' => 'string',
-        'created_at' => 'timestamp',
-        'updated_at' => 'timestamp'
+        //
     ];
 
     /**
@@ -44,7 +48,6 @@ class Car extends Model
         return $this->belongsTo(\App\User::class);
     }
 
-
     /**
      * Get the Garages for the Car.
      */
@@ -52,5 +55,4 @@ class Car extends Model
     {
         return $this->belongsToMany(\App\Garage::class);
     }
-
 }
